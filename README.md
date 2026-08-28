@@ -12,7 +12,7 @@ Stuff aimed at ~3.5 (NoVmp etc.) assumed a pretty stable world: read a VIP byte,
 Then 3.7+ released, and 3.8–3.10 lean into it:
 
 - **Merged handlers** — one native chunk often does several VM ops *and* the next-handler math. Old per-opcode maps just guess wrong.
-- **Rolling key** — VIP immediates are encrypted. Decrypt is `enc ^ key`, then a per-handler mix (add/neg/rol/…), then `key ^= decrypted`. Not MSVC `rand()` Seed is the VIP VA.
+- **Rolling key** — VIP immediates are encrypted. Decrypt is `enc ^ key`, then a per-handler mix (add/neg/rol/…), then `key ^= decrypted`.
 - **Everything moves** — VIP / VSP / key sit in random GPRs. Sections look like `.kbB0` / `.WhW0` instead of a nice `.vmp0`.
 - **Weird enters** — a lot of the research samples are `push enc; call enter_stub` (sometimes via a `.text` jmp), not “PE entry = vmenter.”
 
